@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Paws Veterinary Clinic</title>
+  <meta name="description" content="Happy Paws — compassionate veterinary care for your pets. Book appointments, explore services, meet our team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       Variables & Reset
+       ===================== */
+    :root{
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#2b9df4;
+      --accent-2:#37c6a6;
+      --glass: rgba(255,255,255,0.65);
+      --radius:14px;
+      --shadow: 0 6px 20px rgba(17,24,39,0.08);
+      --max-width:1100px;
+      --container-padding:24px;
+      --accent-dark:#1478b3;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,var(--bg),#eef7fb 60%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:30px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    .site{
+      width:100%;
+      max-width:var(--max-width);
+      background:transparent;
+    }
+
+    /* ==============
+       Header
+       ============== */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:22px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+    }
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:Poppins,Inter;
+      box-shadow:var(--shadow);
+    }
+    .brand h1{font-size:1.05rem;margin:0}
+    .brand p{margin:0;font-size:0.78rem;color:var(--muted)}
+
+    /* nav */
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:rgba(15,23,42,0.9);text-decoration:none;font-weight:600}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 22px rgba(43,157,244,0.12)}
+    .secondary{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:10px}
+
+    /* Mobile nav */
+    .hamburger{display:none;border:none;background:transparent;font-size:22px}
+
+    /* ==============
+       Hero
+       ============== */
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));
+      border-radius:18px;padding:34px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;box-shadow:var(--shadow)
+    }
+    .hero-left h2{font-family:Poppins,Inter;font-size:28px;margin:0 0 8px}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .features{display:flex;gap:12px;flex-wrap:wrap}
+    .chip{background:var(--card);padding:10px 12px;border-radius:12px;box-shadow:0 6px 18px rgba(10,20,35,0.04);display:flex;align-items:center;gap:10px}
+
+    /* appointment card */
+    .card{background:linear-gradient(180deg,var(--card),#fbfeff);padding:18px;border-radius:12px}
+    .form-row{display:flex;gap:10px;margin-bottom:10px}
+    label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+    input[type="text"],input[type="email"],input[type="date"],select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);font-size:14px}
+    textarea{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);min-height:90px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* ==============
+       Sections
+       ============== */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+    .service{padding:20px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfdff);box-shadow:var(--shadow)}
+    .service h3{margin:0 0 8px;font-size:16px}
+    .service p{margin:0;color:var(--muted);font-size:14px}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px;cursor:pointer}
+
+    /* testimonials */
+    .testimonials{display:flex;gap:12px;margin-top:18px}
+    .testimonial{flex:1;background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+
+    /* footer */
+    footer{margin-top:28px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);display:flex;justify-content:space-between;align-items:center}
+
+    /* responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (max-width:640px){
+      header{flex-direction:column;align-items:flex-start}
+      nav{display:none}
+      .hamburger{display:block}
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      body{padding:18px}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;font-size:13px;background:linear-gradient(90deg,rgba(43,157,244,0.12),rgba(55,198,166,0.08));font-weight:600}
+    .center{text-align:center}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo">HP</div>
+        <div>
+          <h1>Happy Paws</h1>
+          <p>Veterinary Clinic • Compassionate care</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#team">Team</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#appointment">Book Visit</a>
+      </nav>
+
+      <button class="hamburger" aria-label="Open menu" id="hamb">☰</button>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Clinic overview">
+        <div class="hero-left">
+          <span class="pill">24/7 Emergency • Walk-ins welcome</span>
+          <h2>We keep your pets healthy and happy</h2>
+          <p>Primary care, surgery, diagnostics, grooming and dental — all in one gentle, modern space. Trusted by pet owners since 2010.</p>
+
+          <div class="features" style="margin-top:18px">
+            <div class="chip">🩺 Wellness & Vaccines</div>
+            <div class="chip">🔬 Lab & Diagnostics</div>
+            <div class="chip">🦷 Dental Care</div>
+            <div class="chip">✂️ Grooming</div>
+            <div class="chip">🏥 Surgery</div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+            <a class="btn" href="#appointment">Book an appointment</a>
+            <a class="secondary" href="#services">See services</a>
+          </div>
+        </div>
+
+        <aside class="card" id="appointment" aria-labelledby="appointment-heading">
+          <h3 id="appointment-heading">Quick appointment</h3>
+          <p class="small">We will confirm availability by phone or email within 2 hours.</p>
+
+          <form id="apptForm" style="margin-top:12px">
+            <div class="form-row">
+              <div style="flex:1">
+                <label for="name">Owner name</label>
+                <input id="name" type="text" placeholder="Your full name" required />
+              </div>
+              <div style="width:120px">
+                <label for="phone">Phone</label>
+                <input id="phone" type="text" placeholder="+91 9xxxxxxxx" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div style="flex:1">
+                <label for="pet">Pet name & type</label>
+                <input id="pet" type="text" placeholder="Fluffy — Dog" required />
+              </div>
+              <div style="width:140px">
+                <label for="date">Date</label>
+                <input id="date" type="date" required />
+              </div>
+            </div>
+
+            <div style="margin-bottom:10px">
+              <label for="service">Service</label>
+              <select id="service">
+                <option>General checkup</option>
+                <option>Vaccination</option>
+                <option>Dental cleaning</option>
+                <option>Surgery consultation</option>
+                <option>Grooming</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom:10px">
+              <label for="notes">Notes</label>
+              <textarea id="notes" placeholder="Any symptoms, allergies, or concerns"></textarea>
+            </div>
+
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn" type="submit">Request visit</button>
+              <div class="small muted">Or call us: <strong>+91 98765 43210</strong></div>
+            </div>
+          </form>
+        </aside>
+      </section>
+
+      <!-- services -->
+      <section id="services">
+        <h2 style="margin:20px 0 10px">Our Services</h2>
+        <div class="grid">
+          <article class="service">
+            <h3>Preventive Care</h3>
+            <p>Vaccinations, parasite control, senior pet wellness plans and microchipping to keep your pet safe.</p>
+          </article>
+          <article class="service">
+            <h3>Diagnostics & Lab</h3>
+            <p>On-site bloodwork, x-ray, ultrasound, and rapid test kits—fast answers for better care.</p>
+          </article>
+          <article class="service">
+            <h3>Surgery & Anesthesia</h3>
+            <p>Advanced sterile OR with experienced anaesthesia monitoring for elective and emergency procedures.</p>
+          </article>
+          <article class="service">
+            <h3>Dental Care</h3>
+            <p>Comprehensive dental exams, scaling, polishing and extractions with full pain control.</p>
+          </article>
+          <article class="service">
+            <h3>Grooming & Boarding</h3>
+            <p>Comfort-focused grooming and short-term boarding with daily updates and photos.</p>
+          </article>
+          <article class="service">
+            <h3>Behavior & Nutrition</h3>
+            <p>Personalized diet plans and behavior consultations to help your pet thrive at home.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- team + testimonials -->
+      <section id="team" style="margin-top:22px">
+        <h2>Meet the team</h2>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:220px">
+            <h3>Dr. Asha Mehra</h3>
+            <p class="small muted">Chief Veterinarian • DVM</p>
+            <p class="muted" style="margin-top:8px">Specializes in soft tissue surgery and internal medicine. Loves senior pet care and nutrition.</p>
+          </div>
+          <div class="card" style="flex:1;min-width:220px">
+            <h3>Dr. Rajiv Kumar</h3>
+            <p class="small muted">Veterinarian • DVM</p>
+            <p class="muted" style="margin-top:8px">Focus on diagnostics and imaging. Calm and patient with anxious pets.</p>
+          </div>
+          <div class="card" style="flex:1;min-width:220px">
+            <h3>Meera — Clinic Manager</h3>
+            <p class="small muted">Client care & operations</p>
+            <p class="muted" style="margin-top:8px">Your go-to for appointments, medicine refills and follow-ups.</p>
+          </div>
+        </div>
+
+        <div class="testimonials">
+          <div class="testimonial">
+            <p>"Dr. Mehra saved our Leo — attentive, kind and explained everything. The team followed up after surgery."</p>
+            <p class="small muted">— Priya S.</p>
+          </div>
+          <div class="testimonial">
+            <p>"Great boarding and daily photo updates. Very professional and caring staff."</p>
+            <p class="small muted">— Amit R.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- gallery -->
+      <section id="gallery" style="margin-top:20px">
+        <h2>Gallery</h2>
+        <div class="gallery">
+          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=bd7f6a0d8e9f3cb3f8ab6d9a8cb2c5b7" alt="dog" loading="lazy" data-full="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=bd7f6a0d8e9f3cb3f8ab6d9a8cb2c5b7">
+          <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0a8b6d15d4f0a3e1f0b5c6a9c0b11e9a" alt="cat" loading="lazy" data-full="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=0a8b6d15d4f0a3e1f0b5c6a9c0b11e9a">
+          <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8e8d7b6b9a2f3d9f6a0be2c1f6d5b4e2" alt="vet" loading="lazy" data-full="https://images.unsplash.com/photo-1558788353-f76d92427f16?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=8e8d7b6b9a2f3d9f6a0be2c1f6d5b4e2">
+          <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3f4d6c8c9b0a1b2c3d4e5f6a7b8c9d0e" alt="puppy" loading="lazy" data-full="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3f4d6c8c9b0a1b2c3d4e5f6a7b8c9d0e">
+        </div>
+      </section>
+
+      <!-- contact -->
+      <section id="contact" style="margin-top:20px">
+        <h2>Contact & Location</h2>
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-top:10px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:260px">
+            <h3>Happy Paws Clinic</h3>
+            <p class="small muted">123 Pet Lane, Greenfield, Bangalore</p>
+            <p class="muted" style="margin-top:10px">Phone: +91 98765 43210<br>Email: hello@happypaws.example</p>
+            <div style="margin-top:10px">
+              <a class="btn" href="tel:+919876543210">Call now</a>
+            </div>
+          </div>
+
+          <div class="card" style="flex:2;min-width:300px">
+            <h3>Send us a message</h3>
+            <form id="contactForm" style="margin-top:8px">
+              <div class="form-row">
+                <input id="cname" type="text" placeholder="Your name" required />
+                <input id="cemail" type="email" placeholder="Email" required />
+              </div>
+              <div style="margin-top:8px">
+                <textarea id="cmsg" placeholder="How can we help?"></textarea>
+              </div>
+              <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+                <button class="btn" type="submit">Send message</button>
+                <div class="small muted">We respond within 24 hours on weekdays.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>
+          <strong>Happy Paws</strong> • Trusted care since 2010
+        </div>
+        <div class="muted">© <span id="year"></span> Happy Paws • All rights reserved</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal for gallery -->
+  <div id="modal" style="position:fixed;left:0;top:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:60">
+    <div style="max-width:900px;width:90%;background:white;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px rgba(2,6,23,0.6);">
+      <div style="padding:12px;text-align:right;background:linear-gradient(90deg,rgba(0,0,0,0.02),transparent)"> <button id="closeModal" style="border:none;background:transparent;font-size:20px">✕</button></div>
+      <img id="modalImg" src="" alt="full" style="width:100%;height:auto;display:block;max-height:80vh;object-fit:contain;background:#efeff2" />
+    </div>
+  </div>
+
+  <script>
+    // small utilities & interactivity
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav toggle (simple)
+    const hamb = document.getElementById('hamb');
+    hamb.addEventListener('click', ()=>{
+      const nav = document.querySelector('nav');
+      if(nav.style.display === 'flex') nav.style.display = '';
+      else nav.style.display = 'flex';
+    });
+
+    // appointment form handling
+    const appt = document.getElementById('apptForm');
+    appt.addEventListener('submit', function(e){
+      e.preventDefault();
+      // basic validation
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const pet = document.getElementById('pet').value.trim();
+      const date = document.getElementById('date').value;
+      if(!name || !phone || !pet || !date){
+        alert('Please complete all required fields.');
+        return;
+      }
+      // simulate sending
+      this.querySelector('button').disabled = true;
+      this.querySelector('button').textContent = 'Sending...';
+      setTimeout(()=>{
+        alert('Thanks ' + name + ". We'll confirm your appointment shortly.");
+        this.reset();
+        this.querySelector('button').disabled = false;
+        this.querySelector('button').textContent = 'Request visit';
+      },1200);
+    });
+
+    // contact form
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const cname = document.getElementById('cname').value.trim();
+      const cemail = document.getElementById('cemail').value.trim();
+      if(!cname || !cemail){
+        alert('Please add your name and email so we can reply.');
+        return;
+      }
+      this.querySelector('button').disabled = true;
+      this.querySelector('button').textContent = 'Sending...';
+      setTimeout(()=>{
+        alert('Message sent — thanks '+ cname +'. We will reply soon.');
+        this.reset();
+        this.querySelector('button').disabled = false;
+        this.querySelector('button').textContent = 'Send message';
+      },900);
+    });
+
+    // gallery modal
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        modalImg.src = img.dataset.full || img.src;
+        modal.style.display = 'flex';
+      });
+    });
+    document.getElementById('closeModal').addEventListener('click', ()=>modal.style.display='none');
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.style.display='none' });
+
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
+    });
+
+    // small progressive enhancement: set min date to today for appointment
+    const dateEl = document.getElementById('date');
+    if(dateEl){
+      const today = new Date().toISOString().split('T')[0];
+      dateEl.setAttribute('min', today);
+    }
+  </script>
+</body>
+</html>
